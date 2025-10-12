@@ -110,7 +110,7 @@ elif page == "🧾 History":
     # Tombol Delete History
     if st.button("🗑️ Delete History"):
         st.session_state.history = []
-        st.experimental_rerun()
+        st.rerun()
 
 else:
     st.info("📭 No prediction history yet.")
@@ -119,4 +119,5 @@ else:
 #  Footer
 st.markdown("---")
 st.caption("💡 Created by Atikah DR | Machine Learning Cyberbullying Project")
+
 
