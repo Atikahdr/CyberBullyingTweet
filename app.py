@@ -83,7 +83,7 @@ if st.button("🔍 Prediction"):
             st.error(f"🚨 **Types of Cyberbullying:** {label_pred}")
             
         st.markdown("---")
-        st.caption("Model: Logistic Regression - Tuned with TF-IDF features")
+        st.caption("Model: Support Vector Machine - Tuned with TF-IDF features")
 
 # Page 2: Probabilitas (Bar Chart)
 elif page == "📊 Bar Probabilitas":
@@ -119,6 +119,7 @@ else:
 #  Footer
 st.markdown("---")
 st.caption("💡 Created by Atikah DR | Machine Learning Cyberbullying Project")
+
 
 
 
