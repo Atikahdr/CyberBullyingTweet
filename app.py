@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
 def load_components():
-    model = joblib.load("model_svm.pkl")
-    vectorizer = joblib.load("tfidf_vectorizer.pkl")
-    label_encoder = joblib.load("label_encoder.pkl")
+    model = joblib.load("model_logreg.pkl")
+    vectorizer = joblib.load("tfidf_vectorizer_.pkl")
+    label_encoder = joblib.load("label_encoder_.pkl")
     return model, vectorizer, label_encoder
 
 model, vectorizer, le = load_components()
@@ -48,42 +48,42 @@ if page == "🧠 Prediction":
 
     user_input = st.text_area("📝 Enter text:", height=150, placeholder="Type your text or tweet here...")
 
-if st.button("🔍 Prediction"):
-    if user_input.strip() == "":
-        st.warning("⚠️ Please enter the text first.")
-    else:
-        # Transform text into vector form TF - IDF
-        X_input = vectorizer.transform([user_input])
-
-        # Prediction of Class
-        y_pred = model.predict(X_input)
-        y_prob = model.predict_proba(X_input)
-
-        # Converting prediction results to original labels
-        label_pred = le.inverse_transform(y_pred)[0] if hasattr(le, "inverse_transform") else y_pred[0]
-
-        # Taking the probability of each class
-        probs = dict(zip(le.classes_, y_prob[0] * 100))
-
-        # Save results to session
-        st.session_state.last_probs = probs
-        st.session_state.last_label = label_pred
-
-         # Save to History
-        st.session_state.history.append({
-            "Teks": user_input,
-            "Result": label_pred
-        })
-        
-        # Results Display
-        st.subheader("🎯 Prediction Results")
-        if label_pred.lower() == "not_cyberbullying":
-            st.success(f"✅ **Types of Cyberbullying:** {label_pred}")
+    if st.button("🔍 Prediction"):
+        if user_input.strip() == "":
+            st.warning("⚠️ Please enter the text first.")
         else:
-            st.error(f"🚨 **Types of Cyberbullying:** {label_pred}")
+             # Transform text into vector form TF - IDF
+            X_input = vectorizer.transform([user_input])
+
+            # Prediction of Class
+            y_pred = model.predict(X_input)
+            y_prob = model.predict_proba(X_input)
+
+            # Converting prediction results to original labels
+            label_pred = le.inverse_transform(y_pred)[0] if hasattr(le, "inverse_transform") else y_pred[0]
+
+            # Taking the probability of each class
+            probs = dict(zip(model.classes_, y_prob[0] * 100))
+
+            # Save results to session
+            st.session_state.last_probs = probs
+            st.session_state.last_label = label_pred
+
+            # Save to History
+            st.session_state.history.append({
+                "Teks": user_input,
+                "Result": label_pred
+            })
             
-        st.markdown("---")
-        st.caption("Model: Support Vector Machine - Tuned with TF-IDF features")
+            # Results Display
+            st.subheader("🎯 Prediction Results")
+            if label_pred.lower() == "not_cyberbullying":
+                st.success(f"✅ **Types of Cyberbullying:** {label_pred}")
+            else:
+                st.error(f"🚨 **Types of Cyberbullying:** {label_pred}")
+                
+            st.markdown("---")
+            st.caption("Model: Logistic Regression - Tuned with TF-IDF features")
 
 # Page 2: Probabilitas (Bar Chart)
 elif page == "📊 Bar Probabilitas":
@@ -110,7 +110,7 @@ elif page == "🧾 History":
     # Tombol Delete History
     if st.button("🗑️ Delete History"):
         st.session_state.history = []
-        st.rerun()
+        st.toast("History deleted successfully!", icon="🗑️")
 
 else:
     st.info("📭 No prediction history yet.")
@@ -119,9 +119,3 @@ else:
 #  Footer
 st.markdown("---")
 st.caption("💡 Created by Atikah DR | Machine Learning Cyberbullying Project")
-
-
-
-
-
-
