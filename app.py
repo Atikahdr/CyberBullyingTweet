@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
 def load_components():
-    model = joblib.load("model_logreg.pkl")
+    model = joblib.load("model_svm.pkl")
     vectorizer = joblib.load("tfidf_vectorizer.pkl")
     label_encoder = joblib.load("label_encoder.pkl")
     return model, vectorizer, label_encoder
@@ -119,6 +119,7 @@ else:
 #  Footer
 st.markdown("---")
 st.caption("💡 Created by Atikah DR | Machine Learning Cyberbullying Project")
+
 
 
 
