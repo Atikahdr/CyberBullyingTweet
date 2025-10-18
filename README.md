@@ -15,8 +15,8 @@ About Dataset
     The data has been balanced in order to contain ~8000 of each class.
     
 **"Trigger Warning These tweets either describe a bullying event or are the offense themselves, therefore explore it to the point where you feel comfortable."**
-<p><img width="1389" height="1163" alt="image" src="https://github.com/user-attachments/assets/0fec080c-51e9-466e-bcc1-7ace15e5ea2b" />
-</p>
+<img width="1389" height="1163" alt="image" src="https://github.com/user-attachments/assets/c60bc8b8-02ba-471d-bcc6-fe6d4dafcb13" />
+
 
 <img width="1342" height="520" alt="image" src="https://github.com/user-attachments/assets/a2e5d9cd-1a2e-4a9f-a258-d6563d9f47ee" />
 Deploy by Streamlit: https://cyberbullyingtweet-tfidf-textprediction.streamlit.app/
