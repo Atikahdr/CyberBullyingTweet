@@ -63,7 +63,7 @@ if page == "🧠 Prediction":
             label_pred = le.inverse_transform(y_pred)[0] if hasattr(le, "inverse_transform") else y_pred[0]
 
             # Taking the probability of each class
-            probs = dict(zip(model.classes_, y_prob[0] * 100))
+            probs = dict(zip(le.inverse_transform(model.classes_), y_prob[0] * 100))
 
             # Save results to session
             st.session_state.last_probs = probs
@@ -119,3 +119,4 @@ else:
 #  Footer
 st.markdown("---")
 st.caption("💡 Created by Atikah DR | Machine Learning Cyberbullying Project")
+
