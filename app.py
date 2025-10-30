@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
 def load_components():
-    model = joblib.load("C:/Users/AtikahDR/Documents/Data Science Project/CyberBullying/model_xgb.pkl")
-    vectorizer = joblib.load("C:/Users/AtikahDR/Documents/Data Science Project/CyberBullying/tfidf_vectorizerx.pkl")
-    label_encoder = joblib.load("C:/Users/AtikahDR/Documents/Data Science Project/CyberBullying/label_encoderx.pkl")
+    model = joblib.load("model_xgb.pkl")
+    vectorizer = joblib.load("tfidf_vectorizerx.pkl")
+    label_encoder = joblib.load("label_encoderx.pkl")
     return model, vectorizer, label_encoder
 
 model, vectorizer, le = load_components()
@@ -187,4 +187,5 @@ else:
 
 #  Footer
 st.markdown("---")
+
 st.caption("💡 Created by Atikah DR | Machine Learning Prediction Project")
